@@ -25,6 +25,15 @@ var csvOptions = builder.Configuration.GetSection("Storage:Csv").Get<CsvStorageO
 var csvStorageInitializer = new CsvStorageInitializer();
 await csvStorageInitializer.EnsureCreatedAsync(builder.Environment.ContentRootPath, csvOptions);
 
+builder.Services.AddScoped<ITransactionRepository>(_ =>
+    new CsvTransactionRepository(builder.Environment.ContentRootPath, csvOptions, csvStorageInitializer));
+
+builder.Services.AddScoped<IRecurringTransactionRepository>(_ =>
+    new CsvRecurringTransactionRepository(builder.Environment.ContentRootPath, csvOptions, csvStorageInitializer));
+
+builder.Services.AddScoped<IRecurrenceRuleRepository>(_ =>
+    new CsvRecurrenceRuleRepository(builder.Environment.ContentRootPath, csvOptions, csvStorageInitializer));
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline
