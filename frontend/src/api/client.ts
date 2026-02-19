@@ -1,4 +1,4 @@
-const DEFAULT_API_BASE_URL = 'http://localhost:5147'
+const DEFAULT_API_BASE_URL = ''
 
 export const API_BASE_URL =
   import.meta.env.VITE_API_BASE_URL ?? DEFAULT_API_BASE_URL
@@ -21,7 +21,13 @@ interface RequestOptions {
 }
 
 function buildUrl(path: string, query?: RequestOptions['query']): string {
-  const url = new URL(path, API_BASE_URL.endsWith('/') ? API_BASE_URL : `${API_BASE_URL}/`)
+  const normalizedBaseUrl = API_BASE_URL
+    ? API_BASE_URL.endsWith('/')
+      ? API_BASE_URL
+      : `${API_BASE_URL}/`
+    : window.location.origin
+
+  const url = new URL(path, normalizedBaseUrl)
 
   if (query) {
     for (const [key, value] of Object.entries(query)) {
