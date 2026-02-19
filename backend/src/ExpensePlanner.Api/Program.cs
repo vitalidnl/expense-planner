@@ -34,6 +34,11 @@ builder.Services.AddScoped<IRecurringTransactionRepository>(_ =>
 builder.Services.AddScoped<IRecurrenceRuleRepository>(_ =>
     new CsvRecurrenceRuleRepository(builder.Environment.ContentRootPath, csvOptions, csvStorageInitializer));
 
+builder.Services.AddScoped<IDataResetRepository>(_ =>
+    new CsvDataResetRepository(builder.Environment.ContentRootPath, csvOptions, csvStorageInitializer));
+
+builder.Services.AddScoped<DataResetService>();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline
