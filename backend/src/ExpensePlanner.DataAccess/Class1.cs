@@ -1,4 +1,4 @@
-﻿namespace ExpensePlanner.DataAccess;
+namespace ExpensePlanner.DataAccess;
 
 public class Class1
 {

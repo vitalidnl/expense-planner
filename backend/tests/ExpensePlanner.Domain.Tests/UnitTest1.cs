@@ -1,4 +1,4 @@
-﻿namespace ExpensePlanner.Domain.Tests;
+namespace ExpensePlanner.Domain.Tests;
 
 public class UnitTest1
 {

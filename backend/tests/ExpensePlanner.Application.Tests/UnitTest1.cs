@@ -1,4 +1,4 @@
-﻿namespace ExpensePlanner.Application.Tests;
+namespace ExpensePlanner.Application.Tests;
 
 public class UnitTest1
 {
