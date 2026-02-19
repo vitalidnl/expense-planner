@@ -1,0 +1,13 @@
+{
+    "servers": {
+        "github": {
+			"type": "http",
+			"url": "https://api.githubcopilot.com/mcp/"
+		},
+        "copilot-session-logger": {
+            "type": "stdio",
+            "command": "node",
+            "args": ["C:\\godel\\playground\\copilot-session-logger\\dist\\index.js", "--workspaceRoot", "${workspaceFolder}"]
+        }
+  }
+}
