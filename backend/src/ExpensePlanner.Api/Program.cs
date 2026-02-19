@@ -1,5 +1,6 @@
 using ExpensePlanner.Application;
 using ExpensePlanner.DataAccess;
+using ExpensePlanner.DataAccess.Csv;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -19,6 +20,10 @@ builder.Services.AddSwaggerGen(c =>
 
 // Add basic DI wiring for generic repository (placeholder)
 builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
+
+var csvOptions = builder.Configuration.GetSection("Storage:Csv").Get<CsvStorageOptions>() ?? new CsvStorageOptions();
+var csvStorageInitializer = new CsvStorageInitializer();
+await csvStorageInitializer.EnsureCreatedAsync(builder.Environment.ContentRootPath, csvOptions);
 
 var app = builder.Build();
 
