@@ -7,6 +7,7 @@ export default defineConfig({
   server: {
     proxy: {
       '/transactions': 'http://localhost:5147',
+      '/recurrence-rules': 'http://localhost:5147',
       '/recurring-transactions': 'http://localhost:5147',
       '/forecast': 'http://localhost:5147',
       '/reset': 'http://localhost:5147',

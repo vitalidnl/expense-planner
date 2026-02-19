@@ -12,6 +12,13 @@ export {
   resumeRecurringTransaction,
   updateRecurringTransaction,
 } from './recurringTransactions'
+export {
+  createRecurrenceRule,
+  deleteRecurrenceRule,
+  getRecurrenceRuleById,
+  getRecurrenceRules,
+  updateRecurrenceRule,
+} from './recurrenceRules'
 export { resetData } from './reset'
 export {
   createTransaction,
