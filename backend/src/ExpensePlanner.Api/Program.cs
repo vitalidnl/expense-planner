@@ -1,5 +1,6 @@
 using ExpensePlanner.Application;
 using ExpensePlanner.Api.Validation.Transactions;
+using ExpensePlanner.Api.Services;
 using ExpensePlanner.DataAccess;
 using ExpensePlanner.DataAccess.Csv;
 using FluentValidation;
@@ -42,6 +43,8 @@ builder.Services.AddScoped<IRecurrenceRuleRepository>(_ =>
 builder.Services.AddScoped<IDataResetRepository>(_ =>
     new CsvDataResetRepository(builder.Environment.ContentRootPath, csvOptions, csvStorageInitializer));
 
+builder.Services.AddSingleton<IClock, SystemClock>();
+builder.Services.AddScoped<TransactionService>();
 builder.Services.AddScoped<DataResetService>();
 
 var app = builder.Build();
@@ -61,3 +64,5 @@ app.UseAuthorization();
 app.MapControllers();
 
 app.Run();
+
+public partial class Program;
