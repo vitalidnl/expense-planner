@@ -1,0 +1,7 @@
+@ExpensePlanner.Api_HostAddress = http://localhost:5147
+
+### Check API is running
+GET {{ExpensePlanner.Api_HostAddress}}/health
+Accept: application/json
+
+###
