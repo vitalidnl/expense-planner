@@ -13,7 +13,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\ExpensePlanner.Application\ExpensePlanner.Application.csproj" />
-    <ProjectReference Include="..\ExpensePlanner.Domain\ExpensePlanner.Domain.csproj" />
+    <ProjectReference Include="..\ExpensePlanner.DataAccess\ExpensePlanner.DataAccess.csproj" />
   </ItemGroup>
 
 </Project>

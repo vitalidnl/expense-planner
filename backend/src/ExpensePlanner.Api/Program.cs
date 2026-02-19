@@ -1,3 +1,6 @@
+using ExpensePlanner.Application;
+using ExpensePlanner.DataAccess;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container
@@ -6,10 +9,15 @@ builder.Services.AddControllers();
 // Add Swagger/OpenAPI in development
 builder.Services.AddSwaggerGen(c =>
 {
-    c.SwaggerDoc("v1", new(new() { Title = "Expense Planner API", Version = "v1" }));
+    c.SwaggerDoc("v1", new()
+    {
+        Title = "Expense Planner API",
+        Version = "v1",
+        Description = "REST API for expense planning with recurrence support"
+    });
 });
 
-// Add basic DI wiring (to be expanded with actual services)
+// Add basic DI wiring for generic repository (placeholder)
 builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
 
 var app = builder.Build();
@@ -29,27 +37,3 @@ app.UseAuthorization();
 app.MapControllers();
 
 app.Run();
-
-/// <summary>
-/// Generic repository interface for future implementation
-/// </summary>
-public interface IRepository<T> where T : class
-{
-    Task<IEnumerable<T>> GetAllAsync();
-    Task<T?> GetByIdAsync(int id);
-    Task AddAsync(T entity);
-    Task UpdateAsync(T entity);
-    Task DeleteAsync(int id);
-}
-
-/// <summary>
-/// Placeholder repository implementation
-/// </summary>
-public class Repository<T> : IRepository<T> where T : class
-{
-    public Task<IEnumerable<T>> GetAllAsync() => Task.FromResult(Enumerable.Empty<T>());
-    public Task<T?> GetByIdAsync(int id) => Task.FromResult((T?)null);
-    public Task AddAsync(T entity) => Task.CompletedTask;
-    public Task UpdateAsync(T entity) => Task.CompletedTask;
-    public Task DeleteAsync(int id) => Task.CompletedTask;
-}

@@ -9,6 +9,9 @@ backend/**/obj/
 frontend/node_modules/
 frontend/dist/
 
+# Copilot session logs
+copilot-session-log/
+
 # General
 .DS_Store
 .env
