@@ -46,6 +46,7 @@ builder.Services.AddScoped<IDataResetRepository>(_ =>
 builder.Services.AddSingleton<IClock, SystemClock>();
 builder.Services.AddScoped<TransactionService>();
 builder.Services.AddScoped<RecurringTransactionService>();
+builder.Services.AddScoped<ForecastService>();
 builder.Services.AddScoped<DataResetService>();
 
 var app = builder.Build();
