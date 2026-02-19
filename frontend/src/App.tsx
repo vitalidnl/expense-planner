@@ -1,6 +1,6 @@
-import { NavLink, Route, Routes } from 'react-router-dom'
+import { NavLink, Navigate, Route, Routes } from 'react-router-dom'
+import DataResetPage from './pages/DataResetPage'
 import ForecastPage from './pages/ForecastPage'
-import HomePage from './pages/HomePage'
 import NotFoundPage from './pages/NotFoundPage'
 import RecurringPage from './pages/RecurringPage'
 import TransactionsPage from './pages/TransactionsPage'
@@ -10,7 +10,7 @@ function App() {
     <div className="min-h-screen">
       <header className="border-b">
         <nav className="mx-auto flex max-w-5xl items-center gap-4 p-4">
-          <NavLink className="font-semibold" to="/">
+          <NavLink className="font-semibold" to="/forecast">
             Expense Planner
           </NavLink>
           <NavLink className="underline" to="/forecast">
@@ -22,15 +22,19 @@ function App() {
           <NavLink className="underline" to="/recurring">
             Recurring
           </NavLink>
+          <NavLink className="underline" to="/data-reset">
+            Data Reset
+          </NavLink>
         </nav>
       </header>
 
       <main className="mx-auto max-w-5xl p-4">
         <Routes>
-          <Route path="/" element={<HomePage />} />
+          <Route path="/" element={<Navigate replace to="/forecast" />} />
           <Route path="/forecast" element={<ForecastPage />} />
           <Route path="/transactions" element={<TransactionsPage />} />
           <Route path="/recurring" element={<RecurringPage />} />
+          <Route path="/data-reset" element={<DataResetPage />} />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </main>
