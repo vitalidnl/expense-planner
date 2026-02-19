@@ -1,4 +1,4 @@
-﻿namespace ExpensePlanner.Domain;
+namespace ExpensePlanner.Domain;
 
 public class Class1
 {
