@@ -1,11 +1,16 @@
 using ExpensePlanner.Application;
+using ExpensePlanner.Api.Validation.Transactions;
 using ExpensePlanner.DataAccess;
 using ExpensePlanner.DataAccess.Csv;
+using FluentValidation;
+using FluentValidation.AspNetCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container
 builder.Services.AddControllers();
+builder.Services.AddFluentValidationAutoValidation();
+builder.Services.AddValidatorsFromAssemblyContaining<CreateTransactionRequestValidator>();
 
 // Add Swagger/OpenAPI in development
 builder.Services.AddSwaggerGen(c =>
