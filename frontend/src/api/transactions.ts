@@ -12,12 +12,20 @@ export interface GetTransactionsQuery {
   scope?: TransactionScope
 }
 
+function toApiScope(scope: TransactionScope | undefined): string | undefined {
+  if (!scope) {
+    return undefined
+  }
+
+  return scope.charAt(0).toUpperCase() + scope.slice(1)
+}
+
 export function getTransactions(query: GetTransactionsQuery = {}) {
   return apiRequest<TransactionResponse[]>('transactions', {
     query: {
       from: query.from,
       to: query.to,
-      scope: query.scope,
+      scope: toApiScope(query.scope),
     },
   })
 }
